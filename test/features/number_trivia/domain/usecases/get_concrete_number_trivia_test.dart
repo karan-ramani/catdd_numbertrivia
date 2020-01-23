@@ -6,27 +6,26 @@ import 'package:mockito/mockito.dart';
 
 class MockNumberTriviaRepository extends Mock implements NumberTriviaRepository {}
 
-void main(){
+main(){
   GetConcreteNumberTrivia usecase;
   MockNumberTriviaRepository mockNumberTriviaRepository;
-
+  
   setUp((){
     mockNumberTriviaRepository = MockNumberTriviaRepository();
-    usecase = GetConcreteNumberTrivia();
+    usecase = GetConcreteNumberTrivia(mockNumberTriviaRepository);
   });
-
-  final tNumberTrivia = NumberTrivia(number: 1, trivia: 'text');
-
-  test('should get trivia for the number from the repository',
-      () async {
-        // arrange
-        when(mockNumberTriviaRepository.getConcreteNumberTrivia(any))
-            .thenAnswer((_) async => Right(tNumberTrivia));
-        // act
-        final result = await usecase(Params(number: 1));
-        // assert
-        expect(result, Right(tNumberTrivia));
-        Verify()
-      },
-  );
+  
+  int tNumber = 1;
+  NumberTrivia tNumberTrivia;
+  
+  test('Should accept number and return Trivia', () async {
+    //arrange
+    when(mockNumberTriviaRepository.getConcreteNumberTrivia(any)
+        .then((_){Right()})
+    );
+    //act
+    
+    //verify
+    
+  });
 }
