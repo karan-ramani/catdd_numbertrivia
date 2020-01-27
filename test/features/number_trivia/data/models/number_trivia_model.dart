@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:catdd_numbertrivia/features/number_trivia/data/model/number_trivia_model.dart';
+import 'package:catdd_numbertrivia/features/number_trivia/data/models/number_trivia_model.dart';
 import 'package:catdd_numbertrivia/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:flutter_test/flutter_test.dart';
 

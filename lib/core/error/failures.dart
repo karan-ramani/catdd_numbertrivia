@@ -8,3 +8,7 @@ abstract class Failure extends Equatable{
   @override
   List<Object> get props => properties;
 }
+
+class ServerFailures extends Failure {}
+
+class CacheFailures extends Failure {}
