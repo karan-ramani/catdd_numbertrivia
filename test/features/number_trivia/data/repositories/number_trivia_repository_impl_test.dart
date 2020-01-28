@@ -59,8 +59,8 @@ void main() {
                 tNumber))
                 .thenAnswer((_) async => tNumberTriviaModel);
             //act
-            final result = await
-            numberTriviaRepositoryImpl.getConcreteNumberTrivia(tNumber);
+            final result =
+            await numberTriviaRepositoryImpl.getConcreteNumberTrivia(tNumber);
             //assert
             verify(
                 mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(
@@ -69,14 +69,16 @@ void main() {
           });
 
       test(
-          'Should cache the data locally when remoteDataSoure call is successful', () async {
+          'Should cache the data locally when remoteDataSoure call is successful',
+              () async {
         //arrange
         when(mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(tNumber))
             .thenAnswer((_) async => tNumberTriviaModel);
         //act
         await numberTriviaRepositoryImpl.getConcreteNumberTrivia(tNumber);
         //assert
-        verify(numberTriviaRepositoryImpl.getConcreteNumberTrivia(tNumber));
+        verify(
+            mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(tNumber));
         verify(
             mockNumberTriviaLocalDataSource.cacheNumberTrivia(tNumberTrivia));
       });
