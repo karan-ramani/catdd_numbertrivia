@@ -13,6 +13,8 @@ dependencies:
   dartz: ^0.8.9
   # Value equality between objects
   equatable: ^1.0.2
+  #Internet Connection Checker
+  data_connection_checker: ^0.3.4
 
   # IOS icons
   cupertino_icons: ^0.1.2
