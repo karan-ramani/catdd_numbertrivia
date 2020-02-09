@@ -11,15 +11,13 @@ class InitialNumberTriviaState extends NumberTriviaState {
   List<Object> get props => [];
 }
 
-class Empty extends NumberTriviaState {
-  @override
-  // TODO: implement props
-  List<Object> get props => [];
-}
+//class Empty extends NumberTriviaState {
+//  @override
+//  List<Object> get props => [];
+//}
 
 class Loading extends NumberTriviaState {
   @override
-  // TODO: implement props
   List<Object> get props => [];
 }
 
