@@ -3,7 +3,7 @@ import 'package:catdd_numbertrivia/core/usecases/usecase.dart';
 import 'package:catdd_numbertrivia/features/number_trivia/domain/entities/number_trivia.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
+import 'package:meta/meta.dart';
 
 import '../repositories/number_trivia_repository.dart';
 
