@@ -78,5 +78,24 @@ void main() {
         bloc.add(GetTriviaForConcreteNumber(tNumberString));
       },
     );
+
+    test('Should get data from the concrete use case', () async {
+      //arrange
+      when(mockInputConverter.stringToUnsignedInt(any))
+          .thenReturn(Right(tNumberParsed));
+      when(mockGetConcreteNumberTrivia(any))
+          .thenAnswer((realInvocation) async => Right(tNumberTrivia));
+      //assert Later
+      final expected = [
+        InitialNumberTriviaState(),
+        Loading(),
+        Loaded(trivia: tNumberTrivia),
+      ];
+      //act
+      bloc.add(GetTriviaForConcreteNumber(tNumberString));
+      await untilCalled(mockGetConcreteNumberTrivia(any));
+      //assert
+      verify(mockInputConverter.stringToUnsignedInt(tNumberString));
+    });
   });
 }
