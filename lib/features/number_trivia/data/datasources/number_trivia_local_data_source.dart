@@ -37,5 +37,4 @@ class NumberTriviaLocalDataSourceImpl implements NumberTriviaLocalDataSource {
     final jsonString = jsonEncode(triviaToCache.toJson());
     return sharedPreferences.setString(CACHED_NUMBER_TRIVIA, jsonString);
   }
-
 }

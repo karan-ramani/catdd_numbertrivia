@@ -13,7 +13,7 @@ void main() {
   GetRandomNumberTrivia useCase;
   MockNumberTriviaRepository mockNumberTriviaRepository;
 
-  setUp((){
+  setUp(() {
     mockNumberTriviaRepository = MockNumberTriviaRepository();
     useCase = GetRandomNumberTrivia(mockNumberTriviaRepository);
   });
@@ -21,14 +21,14 @@ void main() {
   NumberTrivia tNumberTrivia = NumberTrivia(number: 1, trivia: 'test');
 
   test('Should return a NumberTrivia without any number param', () async {
-  //arrange
+    //arrange
     when(mockNumberTriviaRepository.getRandomNumberTrivia())
         .thenAnswer((_) async => Right(tNumberTrivia));
 
-  //act
+    //act
     final result = await useCase(NoParams());
 
-  //assert
+    //assert
     expect(result, Right(tNumberTrivia));
     verify(mockNumberTriviaRepository.getRandomNumberTrivia());
     verifyNoMoreInteractions(mockNumberTriviaRepository);

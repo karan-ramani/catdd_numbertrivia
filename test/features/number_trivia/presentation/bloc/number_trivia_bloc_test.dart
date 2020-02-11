@@ -81,7 +81,8 @@ void main() {
       },
     );
 
-    test('Should get data from the concrete use case'
+    test(
+        'Should get data from the concrete use case'
         'and emit [Loading] [Loaded] in same order', () async {
       //arrange
       when(mockInputConverter.stringToUnsignedInt(any))
@@ -102,7 +103,8 @@ void main() {
       verify(mockInputConverter.stringToUnsignedInt(tNumberString));
     });
 
-    test('Should get data from the concrete use case'
+    test(
+        'Should get data from the concrete use case'
         'and emit [Loading] [Error] ServerFailure in same order', () async {
       //arrange
       when(mockInputConverter.stringToUnsignedInt(any))
@@ -123,7 +125,8 @@ void main() {
       verify(mockInputConverter.stringToUnsignedInt(tNumberString));
     });
 
-    test('Should get data from the concrete use case'
+    test(
+        'Should get data from the concrete use case'
         'and emit [Loading] [Error] CacheFailure in same order', () async {
       //arrange
       when(mockInputConverter.stringToUnsignedInt(any))
@@ -148,7 +151,8 @@ void main() {
   group('GetTriviaForRandomNumber', () {
     final tNumberTrivia = NumberTrivia(number: 1, trivia: 'test trivia');
 
-    test('Should get data from the random use case'
+    test(
+        'Should get data from the random use case'
         'and emit [Loading] [Loaded] in same order', () async {
       //arrange
       when(mockGetRandomNumberTrivia(any))
@@ -167,7 +171,8 @@ void main() {
       verify(mockGetRandomNumberTrivia(NoParams()));
     });
 
-    test('Should get data from the random use case'
+    test(
+        'Should get data from the random use case'
         'and emit [Loading] [Error] ServerFailure in same order', () async {
       //arrange
       when(mockGetRandomNumberTrivia(any))
@@ -186,7 +191,8 @@ void main() {
       verify(mockGetRandomNumberTrivia(NoParams()));
     });
 
-    test('Should get data from the random use case'
+    test(
+        'Should get data from the random use case'
         'and emit [Loading] [Error] CacheFailure in same order', () async {
       //arrange
       when(mockGetRandomNumberTrivia(any))

@@ -55,15 +55,14 @@ class NumberTriviaBloc extends Bloc<NumberTriviaEvent, NumberTriviaState> {
         },
       );
     } else if (event is GetTriviaForRandomNumber) {
-          yield Loading();
-          final failureOrTrivia = await getRandomNumberTrivia(NoParams());
-          yield* _eitherLoadedOrErrorState(failureOrTrivia);
+      yield Loading();
+      final failureOrTrivia = await getRandomNumberTrivia(NoParams());
+      yield* _eitherLoadedOrErrorState(failureOrTrivia);
     }
   }
 
   Stream<NumberTriviaState> _eitherLoadedOrErrorState(
-      Either<Failure, NumberTrivia> either,
-      ) async* {
+      Either<Failure, NumberTrivia> either,) async* {
     yield either.fold(
           (failure) => _mapToError(failure),
           (trivia) => Loaded(trivia: trivia),

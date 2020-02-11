@@ -77,15 +77,18 @@ void main() {
           'Should cache the data locally when remoteDataSoure call is successful',
               () async {
             //arrange
-            when(mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(tNumber))
+            when(mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(
+                tNumber))
                 .thenAnswer((_) async => tNumberTriviaModel);
             //act
             await numberTriviaRepositoryImpl.getConcreteNumberTrivia(tNumber);
             //assert
             verify(
-                mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(tNumber));
+                mockNumberTriviaRemoteDataSource.getConcreteNumberTrivia(
+                    tNumber));
             verify(
-                mockNumberTriviaLocalDataSource.cacheNumberTrivia(tNumberTrivia));
+                mockNumberTriviaLocalDataSource.cacheNumberTrivia(
+                    tNumberTrivia));
           });
 
       test(
