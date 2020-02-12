@@ -14,11 +14,6 @@ final sl = GetIt.asNewInstance();
 
 Future<void> init() async {
   //! Features - Number Trivia
-  await initNumberTrivia();
-}
-
-Future<void> initNumberTrivia() async {
-  //! Features - Number Trivia
   // Bloc
   sl.registerFactory(() =>
       NumberTriviaBloc(concrete: sl(), random: sl(), inputConverter: sl()));
@@ -31,9 +26,9 @@ Future<void> initNumberTrivia() async {
           remoteDataSource: sl(), localDataSource: sl(), networkInfo: sl()));
   // DataSources & NetworkInfo
   sl.registerLazySingleton<NumberTriviaRemoteDataSource>(
-      () => NumberTriviaRemoteDataSourceImpl(client: sl()));
+          () => NumberTriviaRemoteDataSourceImpl(client: sl()));
   sl.registerLazySingleton<NumberTriviaLocalDataSource>(
-      () => NumberTriviaLocalDataSourceImpl(sharedPreferences: sl()));
+          () => NumberTriviaLocalDataSourceImpl(sharedPreferences: sl()));
   //! Core
   //Input Converter
   sl.registerSingleton(InputConverter());
