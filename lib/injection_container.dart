@@ -1,3 +1,4 @@
+import 'package:catdd_numbertrivia/core/network/network_info.dart';
 import 'package:catdd_numbertrivia/core/utils/input_converter.dart';
 import 'package:catdd_numbertrivia/features/number_trivia/data/datasources/number_trivia_local_data_source.dart';
 import 'package:catdd_numbertrivia/features/number_trivia/data/datasources/number_trivia_remote_data_source.dart';
@@ -6,6 +7,7 @@ import 'package:catdd_numbertrivia/features/number_trivia/domain/repositories/nu
 import 'package:catdd_numbertrivia/features/number_trivia/domain/usecases/get_concrete_number_trivia.dart';
 import 'package:catdd_numbertrivia/features/number_trivia/domain/usecases/get_random_number_trivia.dart';
 import 'package:catdd_numbertrivia/features/number_trivia/presentation/bloc/bloc.dart';
+import 'package:data_connection_checker/data_connection_checker.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -29,6 +31,7 @@ Future<void> init() async {
           () => NumberTriviaRemoteDataSourceImpl(client: sl()));
   sl.registerLazySingleton<NumberTriviaLocalDataSource>(
           () => NumberTriviaLocalDataSourceImpl(sharedPreferences: sl()));
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfoImpl(sl()));
   //! Core
   //Input Converter
   sl.registerSingleton(InputConverter());
@@ -38,4 +41,6 @@ Future<void> init() async {
   // Shared Preferences
   final sharedPreferences = await SharedPreferences.getInstance();
   sl.registerLazySingleton(() => sharedPreferences);
+  // DataConnectionChecker
+  sl.registerLazySingleton(() => DataConnectionChecker());
 }
